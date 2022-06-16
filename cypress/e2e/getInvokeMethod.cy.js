@@ -23,8 +23,13 @@ describe('This will be the second suite case', () => {
         cy.contains('nb-card','Basic form') //tagName + text inside the tag
         .find ('.custom-checkbox')
         .click()
-        .invoke('attr', 'class')
-        .should('contain', 'checked')
+        .invoke('attr', 'class') //atribute as name class
+        //.should('contain', 'checked') //without saving the value in a variable
+        //saved in a variable that can be used for more asserts
+        .then(classValue => {
+            expect(classValue).to.contains('checked')
+
+        })
 
 
     })
