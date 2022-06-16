@@ -7,7 +7,7 @@ describe('This will be the second suite case', () => {
         cy.contains('Forms').click()
         cy.contains('Form Layouts').click()
 
-        //function inside the contains function for search and compare objects inside a form 
+        //function inside the contains function for search and compare objects inside a form //tag name + text in the tag
         cy.contains('nb-card','Using the Grid').then(firstForm => {
             //Variable that call the fist function locator
             const firstEmail = firstForm.find('[for="inputEmail1"]').text()

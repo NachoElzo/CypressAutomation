@@ -7,8 +7,26 @@ describe('This will be the second suite case', () => {
 
      //WAY 1 IN CYPRESS TO GET AND ASSERT AN ELEMENT
         cy.get('[for="exampleInputEmail1"]').should('contain', 'Email address')
-        
-       
+     
+    //WAY 1 IN JQUERY TO GET AND ASSERT AN ELEMENT
+        cy.get('[for="exampleInputEmail1"]').then( label => {
+            expect(label.text()).to.equal('Email address')
+        })
+
+    //WAY 3 IN CYPRESS invoke method to get same element saved in a variable
+        cy.get('[for="exampleInputEmail1"]').invoke('text').then( text => {
+            expect(text).to.equal('Email address')
+
+        }) 
+
+    //CHECK A CHECKBOX + ASSERT IF IS SELECTED
+        cy.contains('nb-card','Basic form') //tagName + text inside the tag
+        .find ('.custom-checkbox')
+        .click()
+        .invoke('attr', 'class')
+        .should('contain', 'checked')
+
+
     })
-   
+       
 })
